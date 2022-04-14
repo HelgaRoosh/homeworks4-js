@@ -16,17 +16,10 @@ Student.prototype.setSubject = function (subjectName) {
 }
 
 Student.prototype.addMark = function (mark) {
-  /*if(this.marks === undefined){ 
-    this.marks = [];
-    this.marks.push(mark);// добавить первую оценку 
-    } else {
-      this.marks.push(mark);// добавить вторую и последующие оценки в массив
-    }
-    */
     if(this.marks === undefined){ 
-      this.marks = [];//создать пустой,если не было
+      this.marks = [];
     }
-      this.marks.push(mark);//добавит в конец даже после создания пустого
+      this.marks.push(mark);
 }
 
 Student.prototype.addMarks = function (...mark) {
@@ -36,14 +29,14 @@ Student.prototype.addMarks = function (...mark) {
     mark.forEach((item, idx, mark) => this.marks.push(mark[idx]));   
 }
 
-Student.prototype.getAverage = function () { //при вызове будет возвращать среднее арифметическое оценок студента
+Student.prototype.getAverage = function () { 
   let sum = 0;
   let marks = this.marks;
   marks.forEach((item, idx, marks) => sum += item);
   return sum / marks.length;
 }
 
-Student.prototype.exclude = function (reason) { //удалить свойства subject и marks и добавить свойство excluded со значением reason
+Student.prototype.exclude = function (reason) { 
   delete this.subject;
   delete this.marks;
   this.excluded = reason;
